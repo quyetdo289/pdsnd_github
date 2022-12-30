@@ -17,7 +17,7 @@ def get_filters():
     """
     # Say 'hello' before filtering data.
     print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington).
+    
     while True:
         cities= ['chicago','new york city','washington']
         city= input("\n Which city would you like to analyse? (Chicago, New york city, Washington) \n").lower()
@@ -27,7 +27,7 @@ def get_filters():
             print("\n Please enter a valid city name")    
 
 
-    # get user input for month (january, february, ... , june or none)
+    
     while True:
         months= ['January','February','March','April','June','May','None']
         month = input("\n Which month would you like to consider? (January, February, March, April, May, June)? Type 'None' for no month filter\n").title()
@@ -37,7 +37,7 @@ def get_filters():
             print("\n Please enter a valid month")    
 
 
-    # get user input for day of week (monday, tuesday, ... sunday or none)
+    
     while True:
         days= ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','None']
         day = input("\n Which day of the week would you like to consider? (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)? Type 'None' for no day filter \n").title()         
@@ -65,29 +65,29 @@ def load_data(city, month, day):
     """
 
     
-    # load data file into a dataframe
+    
     df = pd.read_csv(CITY_DATA[city])
 
-    # convert the Start Time column to datetime
+    
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
-    # extract month and day of week from Start Time to create new columns
+    
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
 
 
-    # filter by month if applicable
+    
     if month != 'None':
-        # use the index of the months list to get the corresponding int
+        
         months = ['January', 'February', 'March', 'April', 'May', 'June']
         month = months.index(month)+1
     
-        # filter by month to create the new dataframe
+        
         df = df[df['month']==month] 
 
-    # filter by day of week if applicable
+    
     if day != 'None':
-        # filter by day of week to create the new dataframe
+        
         df = df[df['day_of_week']==day]
 
     return df
