@@ -12,3 +12,6 @@ Bikeshare data analysis of some cities
 ### Files used
 bikeshare.py 
 
+### License
+Copyright © 2022-2023 quyetdo289@gmail.com 
+
